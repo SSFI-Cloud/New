@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 2, 6, 23;
+  --background-end-rgb: 15, 23, 42;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Glass effect utility */
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-orange {
+    background: linear-gradient(135deg, #f97316, #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+  }
+}
+
+/* Button styles */
+.btn-primary {
+  @apply px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold rounded-lg 
+         hover:from-primary-500 hover:to-primary-400 transition-all duration-300 
+         shadow-lg shadow-primary-600/25 hover:shadow-primary-500/40;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-transparent border-2 border-white/20 text-white font-semibold rounded-lg
+         hover:bg-white/10 hover:border-white/40 transition-all duration-300;
+}
+
+.btn-accent {
+  @apply px-6 py-3 bg-gradient-to-r from-accent-orange to-accent-gold text-dark-900 font-bold rounded-lg
+         hover:from-accent-gold hover:to-accent-orange transition-all duration-300
+         shadow-lg shadow-accent-orange/25;
+}
+
+/* Card styles */
+.card {
+  @apply bg-dark-800/50 backdrop-blur-sm border border-white/5 rounded-2xl p-6
+         hover:border-primary-500/30 transition-all duration-300;
+}
+
+.card-elevated {
+  @apply bg-dark-800/80 backdrop-blur-md border border-white/10 rounded-2xl p-6
+         shadow-xl shadow-black/20 hover:shadow-primary-500/10 transition-all duration-300;
+}
+
+/* Section styles */
+.section {
+  @apply py-16 md:py-24;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-center mb-4;
+}
+
+.section-subtitle {
+  @apply text-lg text-dark-400 text-center max-w-2xl mx-auto mb-12;
+}
